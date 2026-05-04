@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica 2 - Carrusel de imágenes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eadcff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #5e2b97;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        section {
+            width: 80%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #5e2b97;
+        }
+
+        p {
+            font-size: 17px;
+            text-align: justify;
+        }
+
+        .carrusel {
+            width: 650px;
+            max-width: 100%;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .carrusel img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 4px solid #5e2b97;
+        }
+
+        .botones {
+            margin-top: 15px;
+        }
+
+        button {
+            background-color: #5e2b97;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 5px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #8e44ad;
+        }
+
+        footer {
+            background-color: #5e2b97;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Práctica 2</h1>
+        <h3>Carrusel de imágenes con HTML, CSS y JavaScript</h3>
+    </header>
+
+    <section>
+        <h2>Carrusel de imágenes</h2>
+
+        <p>
+            En esta página web se presenta un carrusel de imágenes creado con HTML,
+            CSS y JavaScript. El usuario puede avanzar o retroceder entre varias
+            imágenes utilizando los botones de flecha.
+        </p>
+
+        <div class="carrusel">
+            <img id="imagenCarrusel" src="Imagenes/aguila-con-paisaje_3840x2160_xtrafondos.com.jpg" alt="Imagen del carrusel">
+
+            <div class="botones">
+                <button onclick="imagenAnterior()">⬅ Anterior</button>
+                <button onclick="imagenSiguiente()">Siguiente ➡</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Trabajo realizado para la asignatura de Programación Web</p>
+    </footer>
+
+    <script>
+        var imagenes = [
+            "Imagenes/aguila-con-paisaje_3840x2160_xtrafondos.com.jpg",
+            "Imagenes/carros-deportivos-potencia.jpg",
+            "Imagenes/delorean-retrowave_3840x2160_xtrafondos.com.jpg",
+            "Imagenes/gato-con-estrellas-de-fondo_3840x2160_xtrafondos.com.jpg",
+            "Imagenes/hogwarts-legacy_3840x2160_xtrafondos.com.jpg",
+            "Imagenes/yone-league-of-legends-art_1920x1080_xtrafondos.com.jpg"
+        ];
+
+        var posicion = 0;
+
+        function mostrarImagen() {
+            document.getElementById("imagenCarrusel").src = imagenes[posicion];
+        }
+
+        function imagenSiguiente() {
+            posicion++;
+
+            if (posicion >= imagenes.length) {
+                posicion = 0;
+            }
+
+            mostrarImagen();
+        }
+
+        function imagenAnterior() {
+            posicion--;
+
+            if (posicion < 0) {
+                posicion = imagenes.length - 1;
+            }
+
+            mostrarImagen();
+        }
+    </script>
+
+</body>
+</html>
